@@ -1,21 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"t-jvm/classpath"
+)
 
 func main() {
-	cmd := parseCmd()
-	if cmd.versionFlag {
+	cmd := classpath.ParseCmd()
+	if cmd.VersionFlag {
 		fmt.Printf("version 0.0.1")
-	} else if cmd.helpFlag || cmd.class == "" {
-		printUsage()
+	} else if cmd.HelpFlag || cmd.Class == "" {
+		classpath.PrintUsage()
 	} else {
 		startJVM(cmd)
 	}
 }
 
-func startJVM(cmd *Cmd) {
+func startJVM(cmd *classpath.Cmd) {
 	fmt.Printf("classpath: %s class: %s args:%v\n",
-		cmd.cpOption,
-		cmd.class,
-		cmd.args)
+		cmd.CpOption,
+		cmd.Class,
+		cmd.Args)
 }
