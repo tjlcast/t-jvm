@@ -15,7 +15,6 @@ type Entry interface {
 // 组合模式
 // go 没有构造函数 and 结构体不需要显示实现接口，方法匹配即可
 // 接口体(interface)的名字，视为指针; 结构体(struct)的名字，需要*structName
-
 func newEntry(path string) Entry {
 	if strings.Contains(path, pathListSeparator) {
 		return newCompositeEntry(path)
